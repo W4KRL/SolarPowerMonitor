@@ -11,5 +11,7 @@ Uses a INA219 voltage/current sesnor module to measure solar panel output and a 
 These MATLAB scripts are for your ThingSpeak channel:
 
 ### Light_Power_Correlation
-
 ![](images/light_power_correlation.png)
+
+### Light and Power Overlayed
+![](images/power_and_light_overlayed.png)
