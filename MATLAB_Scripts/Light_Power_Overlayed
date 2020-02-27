@@ -1,29 +1,25 @@
 % Light & Panel Power
 % Plot of light intensity and Solar Panel powewr overlayed on separate axes
 % Karl Berger
-% 24 February 2020
+% 2020.02.27
 
-%%%% ENTER YOUR CHANNEL ID %%%%
-readChannelID = 000000;
+%%%% ENTER YOUR CHANNEL ID %%%%%
+readChannelID = 00000;
 
 % Field definitions
 lightFld = 1; % Light Intensity
-vcellFld = 4; % Vcell
+powerFld = 4; % Panel output power mW
 
-% Length of plot
-dataDays = 1; % number of days to plot
+dataDays = 100; % number of days to plot
 
 %% Read Data %%
-[data, timeStamps] = thingSpeakRead(readChannelID, 'Fields',[vcellFld lightFld], ...
-                     'NumDays', dataDays);
+[data, timeStamps] = thingSpeakRead(readChannelID, 'Fields',[lightFld powerFld], ...
+                     'NumPoints', dataDays);
                                                    
 % Extract the light intensity from the first column
 lux = data(:, 1);
-
 % Extract the solar panel power from the second column
 power = data(:, 2);
-
-%% Visualize the data %%
 
 yyaxis right
 plot(timeStamps, lux, 'Linewidth', 2)
