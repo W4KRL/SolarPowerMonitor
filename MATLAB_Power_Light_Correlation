@@ -1,0 +1,29 @@
+% Correlation of solar panle power and light intensity
+% Solar Power Experiment
+% Karl Berger
+% 2020.02.27
+
+%%%% Enter your channel id %%%%
+readChannelID = 00000;
+
+% Field definitions
+fieldID1 = 1; % light intensity
+fieldID2 = 4; % Panel power
+
+%% Read Data %%
+% one day with data recorded every 5 minutes
+% 288 = 24 hours * 60 minutes per hour / 5 minutes per record
+numPoints = 288;  % you may get an error if the number of points redcorded is less than this number
+
+% Read first data variable
+fld1 = thingSpeakRead(readChannelID, 'Field', fieldID1, 'NumPoints', numPoints);
+
+% Read second data variable
+fld2 = thingSpeakRead(readChannelID, 'Field', fieldID2, 'NumPoints', numPoints);
+
+linearCoef = polyfit(fld1, fld2, 1);
+linearFit = polyval(linearCoef, fld1);
+
+%% Visualize Data %%
+plot(fld1, fld2, 's', fld1, linearFit, 'r-')
+ylabel('Milliwatts'),xlabel('lux');
