@@ -6,7 +6,7 @@
 %%%% ENTER YOUR CHANNEL ID %%%%
 readChannelID = 000000;
 
-% Filed definitions
+% Field definitions
 lightFld = 1; % Light Intensity
 vcellFld = 4; % Vcell
 
