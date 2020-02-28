@@ -1,14 +1,11 @@
 /* D1M-Solar-Monitor.ino
 
    (C) Karl Berger, 2020 All Rights Reserved
-   2020.02.24
-
-   Adapted from:
-   D1 Mini Weather Station (Solar)
+   2020.02.24 - Adapted from D1 Mini Weather Station (Solar)
+ 
    Posts to ThingSpeak using the REST API
 
    Set serial monitor to 115,200 baud
-
 */
 /*_____________________________________________________________________________
    Copyright 2016-2020 Berger Engineering dba IoT Kits
@@ -36,6 +33,7 @@
 */
 
 // 2020.02.27 - changed sleep mode to WAKE_RF_DEFAULT
+// 2020.02.28 - BH1750 range set to HIGH
 
 // ****************************************************************
 // ** REMEMBER: Set switch to PROG to program and RUN to operate **
@@ -77,10 +75,9 @@ WiFiClient client;               // WiFi connection
 // *******************************************************
 void setup() {
   Serial.begin(115200);          // initialize the serial port
-  Serial.println();
+  Serial.println();              // blank lines
   Serial.println();
 
-  //  Wire.begin();                  // wake up the I2C bus for BH1750 & INA219
   initializeSensors();           // start INA219 and BH1750 sensors
   logonToRouter();               // logon to local Wi-Fi
   readSensors();                 // read data into sensorData struct
@@ -92,7 +89,7 @@ void setup() {
 // *******************************************************
 // ************************* LOOP ************************
 // *******************************************************
-void loop() {                     // nothing to do here
+void loop() {                    // nothing to do here
 } // loop()
 
 // *******************************************************
@@ -103,9 +100,11 @@ void loop() {                     // nothing to do here
 // ***************** Initialize Sensors ******************
 // *******************************************************
 void initializeSensors() {
-  // check this "TO_GROUND" command. it works but may not be correct or needed
-  bool avail = myBH1750.begin(BH1750_TO_GROUND);// init the sensor with address pin connected to ground
+  // "TO_GROUND" used for stock BH1750 (GY-302) sensor
+  bool avail = myBH1750.begin(BH1750_TO_GROUND);  // init with address pin connected to ground
   // result (bool) will be be "false" if no sensor found
+  myBH1750.calibrateTiming();
+
   myINA219.begin();
   myINA219.setCalibration_16V_400mA();  // set to maximum sensitivity
 } // initializeSensors()
@@ -115,19 +114,25 @@ void initializeSensors() {
 // *******************************************************
 void readSensors() {
   // read light level in lux
-  myBH1750.start();                           // start light measurement
-  sensorData.lightLevel = myBH1750.getLux();  // get light measurement
+  myBH1750.start(BH1750_QUALITY_HIGH, 31);        // max 121,557 lux, resolution 1.85
+  sensorData.lightLevel = myBH1750.getLux();      // get light measurement (blocking)
+
   // read analog voltage from the Analog to Digital Converter
   // on D1 Mini this is 0 - 1023 for voltages 0 to 3.2V
-  // the D1M-WX1 has an external resistor to extend the range to 5.0 Volts
+  // the Solar Monitor has an external resistor to extend the range to 5.0 Volts
   // a fudgeFactor corrects for voltage divider component variation
   // as measured by the user in the calbration step
   float fudgeFactor = dmmVoltage / adcVoltage;
   sensorData.cellVolts = 5.0 * analogRead(A0) * fudgeFactor / 1023.0;
-  sensorData.panelVolts = myINA219.getBusVoltage_V();
-  sensorData.panelMilliAmps = myINA219.getCurrent_mA();
+
+  // read solar panel output
+  sensorData.panelVolts      = myINA219.getBusVoltage_V();
+  sensorData.panelMilliAmps  = myINA219.getCurrent_mA();
   sensorData.panelMilliWatts = myINA219.getPower_mW();
-  sensorData.wifiRSSI = WiFi.RSSI();  // read the Wi-Fi signal strength (long)
+
+  // read the Wi-Fi signal strength
+  sensorData.wifiRSSI = WiFi.RSSI();
+
 } // readSensors()
 
 // *******************************************************
@@ -139,7 +144,7 @@ void printToSerialPort() {
   Serial.println("\n\tlux\tVp\tmA\tmW\tVc\tdBm");
   // data line
   Serial.print("Data\t");
-  Serial.print(sensorData.lightLevel,0);
+  Serial.print(sensorData.lightLevel, 0);
   Serial.print("\t");
   Serial.print(sensorData.panelVolts, 2);
   Serial.print("\t");
@@ -162,7 +167,7 @@ void logonToRouter() {
   delay(100);
   int count = 0;
   WiFi.mode(WIFI_STA);
-  WiFi.forceSleepWake();     // Bakke
+  WiFi.forceSleepWake();
   WiFi.begin( WIFI_SSID, WIFI_PASSWORD );
   while ( WiFi.status() != WL_CONNECTED ) {
     count++;
@@ -192,24 +197,15 @@ void postToThingSpeak() {
     // declare dataString as a String and initialize with the API_WRITE_KEY
     String dataString = API_WRITE_KEY;
     // cocatenate each field onto the end of dataString
-    dataString += "&field1=";
-    dataString += String(sensorData.lightLevel);
-    dataString += "&field2=";
-    dataString += String(sensorData.panelVolts);
-    dataString += "&field3=";
-    dataString += String(sensorData.panelMilliAmps);
-    dataString += "&field4=";
-    dataString += String(sensorData.panelMilliWatts);
-    dataString += "&field5=";
-    dataString += String(sensorData.cellVolts);
-    dataString += "&field6=";
-    dataString += String(sensorData.wifiRSSI);
-    //    dataString += "&field7=";
-    //    dataString += String();
-    //    dataString += "&field8=";
-    //    dataString += String();
-    //    dataString += "&status=";
-    //    dataString += unitStatus;
+    dataString += "&field1=" + String(sensorData.lightLevel);
+    dataString += "&field2=" + String(sensorData.panelVolts);
+    dataString += "&field3=" + String(sensorData.panelMilliAmps);
+    dataString += "&field4=" + String(sensorData.panelMilliWatts);
+    dataString += "&field5=" + String(sensorData.cellVolts);
+    dataString += "&field6=" + String(sensorData.wifiRSSI);
+    //    dataString += "&field7=" + String();
+    //    dataString += "&field8=" + String();
+    //    dataString += "&status=" + unitStatus;
     //    Serial.println(unitStatus);   // show status on local serial monitor
 
     // find the number of characters in dataString
@@ -243,7 +239,7 @@ void enterSleep(long sleep) {
   Serial.print("Entering deep sleep for ");
   Serial.print( sleep );
   Serial.println(" seconds.");
-  // WAKE_RF_DEFAULTS wakes with WiFi radio ON
+  // WAKE_RF_DEFAULT wakes with WiFi radio ON
   ESP.deepSleep(sleep * 1000000L, WAKE_RF_DEFAULT);
 } // enterSleep()
 

@@ -1,7 +1,7 @@
-// ThingSpeak_config.h for D1M-Solar-Monitor.ino
+// ThingSpeakConfig.h for D1M-WX1_IoT_REST.ino
 
 // This configuration file should reside in the same Arduino
-// directory as the Arduino sketch D1M-Solar-Monitor.ino.
+// directory as the weather station file D1M-WX1_IoT_REST.ino.
 
 // *******************************************************
 // ********************* WIFI LOGON **********************
@@ -9,17 +9,17 @@
 
 // ENTER YOUR WI-FI SSID
 // YOU MUST USE 2.4 GHz WiFi, NOT 5 GHz
-const char WIFI_SSID[] = "your_wifi_ssid";
+const char WIFI_SSID[] = "DCMNET";
 
 // ENTER YOUR WI-FI PASSWORD
-const char WIFI_PASSWORD[] = "your_wifi_password";
+const char WIFI_PASSWORD[] = "0F1A2D3E4D5G6L7O8R9Y";
 
 // *******************************************************
 // ****************** STATION FACTORS ********************
 // *******************************************************
 
-const float dmmVoltage = 1.0;  // voltage displayed on your digital multimeter 
-const float adcVoltage = 1.0;  // voltage reported by the D1 Mini Analog to Digital Converter
+const float dmmVoltage = 4.12;  // voltage displayed on your digital multimeter 
+const float adcVoltage = 4.13;  // voltage reported by the D1 Mini Analog to Digital Converter
 
 // Enter the update interval in seconds
 // The interval must be longer than 15 seconds
@@ -40,11 +40,11 @@ const long SLEEP_INTERVAL = 60;
  *  Field 6 WiFi Signal
  *  Field 7 not used
  *  Field 8 not used
- *  Put check only on used fields
+ *  put check only on used fields
  *  Show Location checked if you wish
  *  Leave Show Status unchecked
  */
 
 // ThingSpeak Channel ID & API Write Key
-const long CHANNEL_ID = 00000;            // numerical value
-const String API_WRITE_KEY = "your_api_write_key";  // between quotes
+const long CHANNEL_ID = 190041;            // numerical value
+const String API_WRITE_KEY = "DPYSLGVHEAECE9FV";  // between quotes
