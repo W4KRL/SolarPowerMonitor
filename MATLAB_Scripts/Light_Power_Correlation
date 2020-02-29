@@ -1,27 +1,60 @@
 % Correlation of solar panel power and light intensity
 % Solar Power Experiment
 % Karl Berger
-% 2020.02.27
+% 2020.02.28
 
-%%%% Enter your channel id %%%%
-readChannelID = 00000;
+% to display fitted equation
+% https://www.mathworks.com/matlabcentral/answers/...
+% 401297-hello-how-do-i-display-the-equation-for-a-polyfit-line-on-this-plot
 
-% Field definitions
-fieldID1 = 1; % light intensity
-fieldID2 = 4; % Panel power
+%%%% ENTER YOUR CHANNEL ID
+readChannelID = 190041;
+
+%%%% ENTER YOUR FIELD ASSIGNMENTS
+fld1 = 1; % light intensity (lux)
+fld2 = 4; % Panel power (mW)
+
+%%%% ENTER THE NUMBER OF DAYS TO DISPLAY
+dataDays = 1;
 
 %% Read Data %%
-numDays = 1;
+% This method ensures that each parameter has the same number of points
+data = thingSpeakRead(readChannelID, 'Fields',[fld1 fld2], ...
+                     'NumDays', dataDays);
+                                                   
+% Extract the light intensity from the first column
+x = data(:, 1);
+% Extract the solar panel power from the second column
+y = data(:, 2);
 
-% Read first data variable
-fld1 = thingSpeakRead(readChannelID, 'Field', fieldID1, 'NumDays', numDays);
+% fit a linear equation to the data
+p = polyfit(x, y, 1);
 
-% Read second data variable
-fld2 = thingSpeakRead(readChannelID, 'Field', fieldID2, 'NumDays', numDays);
+% find the ranges for the x and y data
+x_min = min(x);
+x_max = max(x);
+y_min = polyval(p,x_min);
+y_max = polyval(p,x_max);
 
-linearCoef = polyfit(fld1, fld2, 1);
-linearFit = polyval(linearCoef, fld1);
+% visualize the data
+hold on    % allow Scatter plot to overlay the equation Plot
+scatter(x,y)
+plot([x_min x_max],[y_min y_max],'k--','LineWidth', 2)
+grid on;
 
-%% Visualize Data %%
-plot(fld1, fld2, 's', fld1, linearFit, 'r-')
-ylabel('Milliwatts'),xlabel('lux');
+% Place the fitted equation in upper left of graph.
+xl = xlim;
+yl = ylim;
+xt = 0.05 * (xl(2)-xl(1)) + xl(1);
+yt = 0.90 * (yl(2)-yl(1)) + yl(1);
+
+ylabel('Milliwatts');
+xlabel('Lux');
+
+% handle negative offset in display of equation
+if p(2) >= 0
+caption = sprintf('mW = %f * lux + %g', p(1), p(2));    
+else
+caption = sprintf('mW = %f * lux %g', p(1), p(2));
+end
+text(xt, yt, caption, 'FontSize', 10, 'Color', 'r', 'FontWeight', 'bold');
