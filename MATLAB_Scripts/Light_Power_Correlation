@@ -38,8 +38,8 @@ y_max = polyval(p,x_max);
 
 % visualize the data
 hold on    % allow Scatter plot to overlay the equation Plot
-scatter(x,y)
-plot([x_min x_max],[y_min y_max],'k--','LineWidth', 2)
+scatter(x, y, '.')
+plot([x_min x_max], [y_min y_max], 'k--', 'LineWidth', 2)
 grid on;
 
 % Place the fitted equation in upper left of graph.
