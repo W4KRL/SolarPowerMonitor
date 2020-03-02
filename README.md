@@ -53,6 +53,8 @@ These MATLAB scripts are for your ThingSpeak channel:
 ### Light_Power_Correlation
 This visualization plots 24-hours of power and light intensity on a scatter chart. It uses the MATLAB plotfit function to fit a linear equation to the data. The equation is displayed on the chart.
 
+MATLAB Script: [Light_Power_Correlation](https://github.com/W4KRL/SolarPowerMonitor/blob/master/MATLAB_Scripts/Light_Power_Correlation)
+
 ![](images/light_power_correlation.png)
 
 ### Light and Power Overlayed
