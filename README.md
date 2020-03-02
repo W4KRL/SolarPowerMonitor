@@ -5,7 +5,7 @@ It uses the Wemos D1 Mini with Arduino software. Solar panel output is measured 
 
 The unit periodically transmits the measements to your ThingSpeak channel using the RESTful architecture with HTTP protocol. It goes into deep sleep between transmissions to reduce energy consumption. The D1 Mini can be powered with an external 5 Volt USB adapter if continuous operation is desired.
 
-You can see photographs of the unit at [I'm a relative reference to a repository file](../blob/master/LICENSE)
+You can see photographs of the unit at [I'm a relative reference to a repository file](../W4KRL/SolarPowerMonitor/blob/master/Photo-gallery.md)
 
 ## Installing the Firmware
 To Be Suppled
