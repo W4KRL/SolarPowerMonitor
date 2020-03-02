@@ -9,7 +9,7 @@
 
 // ENTER YOUR WI-FI SSID
 // YOU MUST USE 2.4 GHz WiFi, NOT 5 GHz
-const char WIFI_SSID[] = "your-wiwi-ssid";
+const char WIFI_SSID[] = "your-wifi-ssid";
 
 // ENTER YOUR WI-FI PASSWORD
 const char WIFI_PASSWORD[] = "your-wifi-password";
