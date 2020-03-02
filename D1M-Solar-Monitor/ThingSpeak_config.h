@@ -9,17 +9,17 @@
 
 // ENTER YOUR WI-FI SSID
 // YOU MUST USE 2.4 GHz WiFi, NOT 5 GHz
-const char WIFI_SSID[] = "DCMNET";
+const char WIFI_SSID[] = "your-wiwi-ssid";
 
 // ENTER YOUR WI-FI PASSWORD
-const char WIFI_PASSWORD[] = "0F1A2D3E4D5G6L7O8R9Y";
+const char WIFI_PASSWORD[] = "your-wifi-password";
 
 // *******************************************************
 // ****************** STATION FACTORS ********************
 // *******************************************************
 
-const float dmmVoltage = 4.12;  // voltage displayed on your digital multimeter 
-const float adcVoltage = 4.13;  // voltage reported by the D1 Mini Analog to Digital Converter
+const float dmmVoltage = 4.20;  // voltage displayed on your digital multimeter 
+const float adcVoltage = 4.20;  // voltage reported by the D1 Mini Analog to Digital Converter
 
 // Enter the update interval in seconds
 // The interval must be longer than 15 seconds
@@ -47,4 +47,4 @@ const long SLEEP_INTERVAL = 300;
 
 // ThingSpeak Channel ID & API Write Key
 const long CHANNEL_ID = 190041;            // numerical value
-const String API_WRITE_KEY = "DPYSLGVHEAECE9FV";  // between quotes
+const String API_WRITE_KEY = "xxxxxxxxxx";  // between quotes
