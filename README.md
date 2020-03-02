@@ -38,8 +38,8 @@ Information needed:
 4. ThingSpeak channel ID (a numerical value)
 5. ThingSpeak API Write Key (alphanumeric between quotes)
 6. OPTIONAL (Values determined from running D1M-WX1_Calibration.ino)
-  * DMM voltage
-  * ADC reading
+  - DMM voltage
+  - ADC reading
 
 Save the sketch. Set the **RUN** switch to the **PROG** (unlabeled) position and upload to the microcontroller. Return the switch to **RUN** after a sucessful upload.
 
