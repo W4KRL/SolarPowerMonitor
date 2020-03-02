@@ -59,4 +59,6 @@ This visualization plots 24-hours of power and light intensity on a scatter char
 
 This visualization plots the power and light intensity with time over 24-hours. It displays the energy collected over the 24-hour period as milliwatt-hours.
 
+MTALAB Script: [Light_Power_Overlayed](https://github.com/W4KRL/SolarPowerMonitor/blob/master/MATLAB_Scripts/Light_Power_Overlayed.txt)
+
 ![](images/Power_and_light_overlayed.png)
