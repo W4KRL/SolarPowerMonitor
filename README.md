@@ -15,7 +15,7 @@ Installation of the Arduino IDE and ESP8266 is described in many tutorials avail
 Use the following as a guide.
 * Install the latest version of the Arduino IDE as appropriate to your computer available from [www.arduino.cc](https://www.arduino.cc). Do not install the web version.
 * Install the ESP8266 core into the Arduino IDE. See instructions at  https://github.com/esp8266/Arduino#installing-with-boards-manager
-* Use the Arduino IDE menu item *Tools | Board:* to select LOLIN(WEMOS) R2 D1 & mini or whatever version of teh ESP8266 you are using.  
+* Use the Arduino IDE menu item *Tools | Board:* to select LOLIN(WEMOS) R2 D1 & mini or whatever version of the ESP8266 you are using.  
 * Download the D1M-Solar-Monitor firmware from this repository.
 * Use Arduino IDE menu item *Sketch | Include Library | Manage libraries...* to add these sensor libraries:
    * hp_BH1750 by Stefan Armborst
