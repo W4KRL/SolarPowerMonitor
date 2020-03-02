@@ -1,7 +1,7 @@
-// ThingSpeakConfig.h for D1M-WX1_IoT_REST.ino
+// ThingSpeak_config.h for D1M-Solar-Monitor.ino
 
 // This configuration file should reside in the same Arduino
-// directory as the weather station file D1M-WX1_IoT_REST.ino.
+// directory as the weather station file D1M-Solar-Monitor.ino.
 
 // *******************************************************
 // ********************* WIFI LOGON **********************
