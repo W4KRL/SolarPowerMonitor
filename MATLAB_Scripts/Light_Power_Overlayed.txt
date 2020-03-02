@@ -1,0 +1,65 @@
+% Light & Panel Power Overlay
+% Plot of light intensity and Solar Panel powewr overlayed on separate y axes
+% Karl Berger
+% 2020.02.27
+
+% TODO: plot curve only for non-zero light
+
+%%%% ENTER YOUR CHANNEL ID %%%%%
+readChannelID = 190041;
+
+% Field definitions
+lightFld = 1; % Light Intensity
+powerFld = 4; % Panel output power mW
+
+dataDays = 1; % number of days to plot
+
+%% Read Data %%
+[data, timeStamps] = thingSpeakRead(readChannelID, 'Fields',[lightFld powerFld], ...
+                     'NumDays', dataDays);
+                 
+% create a vector of time intervals in seconds
+% this will be used for integration of power data
+t11 = datevec(datenum(timeStamps));
+t = [0];
+for i = 1:length(timeStamps) - 1
+    t_1(i) =  etime(t11(i + 1, :), t11(i, :));
+    t = [t t(end) + t_1(i)];
+end
+                                                   
+% Extract the light intensity from the first column
+lux = data(:, 1);
+
+% Extract the solar panel power from the second column
+power = data(:, 2);
+
+% integrate milliwatts with time
+% the result is in milliwatt-seconds for the duration of the plot
+energy = trapz(t, power);
+energy = energy / 3600; % convert to milliwatt-hours
+
+light = trapz(t, lux) / 3600;
+
+power_ratio = energy / light;
+
+yyaxis right
+plot(timeStamps, lux, 'Linewidth', 2)
+ylabel('Lux')
+
+yyaxis left
+plot(timeStamps, power, 'Linewidth', 2)
+ylabel('Milliwatts')
+
+datetick('x','hh')
+xlabel('Hour of the day')
+grid on           % grid always tied to left axis
+
+dim = [0.2 0.5 0.3 0.3];   % location and size of text box
+
+e = num2str(energy, '%5.0f');
+r = num2str(power_ratio, '%0.6f');
+line1 = ['Energy:' ' ' e ' mW-h'];
+line2 = ['Ratio:' ' ' r ' mW/lux'];
+
+caption = {line1 line2};
+annotation('textbox', dim, 'String', caption, 'FitBoxToText','on');
