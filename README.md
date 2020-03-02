@@ -7,7 +7,7 @@ The unit periodically transmits the measements to your ThingSpeak channel using 
 
 The D1 Mini receives its energy from the collected solar power. If the solar power is not sufficient to recharge the LiPo cell in darkness the D1 Mini can be powered with an external 5 Volt USB adapter.
 
-You can see photographs of the unit at [Photo_gallery.md](https://github.com/W4KRL/SolarPowerMonitor/blob/master/Photo_Gallery.md)
+Click for project photos: [![photo gallery](https://img.shields.io/badge/Photo-Gallery-brightgreen.svg?style=flat)](https://github.com/W4KRL/SolarPowerMonitor/blob/master/Photo_Gallery.md)
 
 ## Installing the Firmware
 Installation of the Arduino IDE and ESP8266 is described in many tutorials available online. The main thing to note is that the switch on the charger shield must be in the RUN position to operate and the opposite position when uploading firmware to the D1 Mini.
