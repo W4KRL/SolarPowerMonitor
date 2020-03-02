@@ -10,26 +10,26 @@ The D1 Mini receives its energy from the collected solar power. If the solar pow
 You can see photographs of the unit at [Photo_gallery.md](https://github.com/W4KRL/SolarPowerMonitor/blob/master/Photo_Gallery.md)
 
 ## Installing the Firmware
-Installation of the Arduino IDE and ESP8266 is described in many tutorials avaialble online. The main thing to note is that the switch on the charger shield must be in the RUN position to operate and the opposite position when uploading firmware to the D1 Mini.
+Installation of the Arduino IDE and ESP8266 is described in many tutorials available online. The main thing to note is that the switch on the charger shield must be in the RUN position to operate and the opposite position when uploading firmware to the D1 Mini.
 
 Use the following as a guide.
 * Install the latest version of the Arduino IDE as appropriate to your computer available from [www.arduino.cc](https://www.arduino.cc). Do not install the web version.
 * Install the ESP8266 core into the Arduino IDE. See instructions at  https://github.com/esp8266/Arduino#installing-with-boards-manager
-* Use the Arduino IDE menu item Tools | Board: to select LOLIN(WEMOS) R2 D1 & mini or whatever version of teh ESP8266 you are using.  
+* Use the Arduino IDE menu item *Tools | Board:* to select LOLIN(WEMOS) R2 D1 & mini or whatever version of teh ESP8266 you are using.  
 * Download the D1M-Solar-Monitor firmware from this repository.
-* Use Arduino IDE menu item Sketch | Include Library | Manage libraries... to add these sensor libraries:
+* Use Arduino IDE menu item *Sketch | Include Library | Manage libraries...* to add these sensor libraries:
    * hp_BH1750 by Stefan Armborst
    * Adafruit INA219 by Adafruit
 * Open a ThingSpeak channel at [www.ThingSpeak.com](https://thingspeak.com/) and configure it as described in the firmware ThingSpeak_config.h file.
 * Enter your Wi-Fi and ThingSpeak information in the ThnighSpeak_config.h file as described below.
 * Save yor sketch. Connect your computer to the D1 Mini micro USB port.
-* Set the switch on the charger board to the position opposite the RUN position. This is the PROG position but it is unlabelled.
-* Upload the firmware to the D1 Mini. Set the switch to RUN when the upload finishes.
+* Set the switch on the charger board to the position opposite the **RUN** position. This is the **PROG** position but it is unlabelled.
+* Upload the firmware to the D1 Mini. Set the switch to **RUN** when the upload finishes.
 
 ### ThingSpeak_config.h
 The sketch needs a ThingSpeak_config.h file. It must be located in the same folder as the sketch D1M-Solar-Monitor.ino file.
 
-Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h or appropriate tab and edit the information for your station as indicated by the comments within the file.
+Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h tab and edit the information for your station as indicated by the comments within the file.
 
 Information needed:
 1. Your WiFi SSID (You must use 2.4 GHz not 5 GHz.)
@@ -41,7 +41,7 @@ Information needed:
   * DMM voltage
   * ADC reading
 
-Save the sketch. Set the RUN switch to the non-RUN (unlabeled) position and upload to the microcontroller. Return the switch to RUN after a sucessful upload.
+Save the sketch. Set the **RUN** switch to the **PROG** (unlabeled) position and upload to the microcontroller. Return the switch to **RUN** after a sucessful upload.
 
 ## How it works
 The solar panel produces power depending upon the brightness of the light falling on the panel. Current flows from the positive terminal of the panel to the Vin+ terminal of the INA219 curent/voltage sensor. It flows out of the Vin- terminal to the IN+ terminal of the TP4056 charge controller and returns to the negative terminal of the panel from the IN- terminal of the TP4056.
