@@ -24,7 +24,7 @@ const float adcVoltage = 4.13;  // voltage reported by the D1 Mini Analog to Dig
 // Enter the update interval in seconds
 // The interval must be longer than 15 seconds
 // Use 60 seconds for testing, 300 for normal use
-const long SLEEP_INTERVAL = 60;
+const long SLEEP_INTERVAL = 300;
 
 // *******************************************************
 // ******************** THINGSPEAK ***********************
