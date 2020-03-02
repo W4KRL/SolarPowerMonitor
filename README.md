@@ -21,8 +21,8 @@ Use the following as a guide.
    * hp_BH1750 by Stefan Armborst
    * Adafruit INA219 by Adafruit
 * Open a ThingSpeak channel at [www.ThingSpeak.com](https://thingspeak.com/) and configure it as described in the firmware ThingSpeak_config.h file.
-* Enter your Wi-Fi and ThingSpeak information in the ThnighSpeak_config.h file as described below.
-* Save yor sketch. Connect your computer to the D1 Mini micro USB port.
+* Enter your Wi-Fi and ThingSpeak information in the ThingSpeak_config.h file as described below.
+* Save yor sketch. Connect your computer to the D1 Mini micro USB port. Verify theat the D1 Mini serial port is recognized.
 * Set the switch on the charger board to the position opposite the **RUN** position. This is the **PROG** position but it is unlabelled.
 * Upload the firmware to the D1 Mini. Set the switch to **RUN** when the upload finishes.
 
