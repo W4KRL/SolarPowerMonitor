@@ -1,8 +1,11 @@
 # SolarPowerMonitor
-Experimental device to measure solar panel performance
+This is an experimental device to measure solar panel performance. It is adapted from the stacked version of the wireless solar-powered weather station kit available from IoT Kits at [w4krl.com/iot-kits](https://w4krl.com/iot-kits/).
 
-For the Wemos D1 Mini with Arduino software.
-Uses a INA219 voltage/current sesnor module to measure solar panel output and a BH1750 for light intensity.
+It uses the Wemos D1 Mini with Arduino software. Solar panel output is measured by an INA219 voltage/current sesnor module. A BH1750 modules measures light intensity.
+
+The unit periodically transmits the measements to your ThingSpeak channel using the RESTful architecture with HTTP protocol. It goes into deep sleep between transmissions to reduce energy consumption. The D1 Mini can be powered with an external 5 Volt USB adapter if continuous operation is desired.
+
+You can see photographs of the unit at [I'm a relative reference to a repository file](../blob/master/LICENSE)
 
 ## Installing the Firmware
 To Be Suppled
