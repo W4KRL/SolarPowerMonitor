@@ -62,7 +62,7 @@ The ESP8266 runs in a perpectual cycle as long as the LiPo can provide approxima
 * Post data to your ThingSpeak channel
 * Enter deep sleep for one to five minutes
 
-## Compplete Schematic
+## Complete Schematic
 ![](images/INA219_Solar_Schematic.jpg)
 
 ## MATLAB Scripts
