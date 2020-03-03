@@ -63,13 +63,14 @@ The LiPo cell supplies power to the ESP8266 microcontroller through Schottky dio
 
 #### Simplified Power Supply Schematic
 ![](images/EnergyFlow.png)
-The ESP8266 runs in a perpectual cycle as long as the LiPo can provide approximately 3.3 volts or more:
+
+The Arduino firmware in the ESP8266 runs in a perpeptual cycle as long as the LiPo cell can provide approximately 3.3 volts or more:
 * Initialize sensors (INA219 and BH1750)
 * Logon to your WiFi
 * Read sensors
 * Print data to your serial port
 * Post data to your ThingSpeak channel
-* Enter deep sleep for one to five minutes
+* Enter deep sleep for one to five minutes 
 
 ## Complete Schematic
 ![](images/INA219_Solar_Schematic.jpg)
