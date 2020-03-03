@@ -12,7 +12,7 @@ Click for project photos: [![photo gallery](https://img.shields.io/badge/Photo-G
 ## Installing the Firmware
 Installation of the Arduino IDE and ESP8266 is described in many tutorials available online. The main thing to note is that the switch on the charger shield must be in the RUN position to operate and the opposite position when uploading firmware to the D1 Mini.
 
-Use the following as a guide.
+Use the following as a guide:
 * Install the latest version of the Arduino IDE as appropriate to your computer available from [www.arduino.cc](https://www.arduino.cc). Do not install the web version.
 * Install the ESP8266 core into the Arduino IDE. See instructions at  https://github.com/esp8266/Arduino#installing-with-boards-manager
 * Use the Arduino IDE menu item *Tools | Board:* to select LOLIN(WEMOS) R2 D1 & mini or whatever version of the ESP8266 you are using.  
@@ -20,7 +20,7 @@ Use the following as a guide.
 * Use Arduino IDE menu item *Sketch | Include Library | Manage libraries...* to add these sensor libraries:
    - hp_BH1750 by Stefan Armborst
    - Adafruit INA219 by Adafruit
-* Open a ThingSpeak channel at [www.ThingSpeak.com](https://thingspeak.com/) and configure it as described in the firmware ThingSpeak_config.h file.
+* Open a ThingSpeak channel at [www.ThingSpeak.com](https://thingspeak.com/) and configure it as described in the firmware ThingSpeak_config.h file and the ThingSpeak Definition table below.
 * Enter your Wi-Fi and ThingSpeak information in the ThingSpeak_config.h file as described below.
 * Save yor sketch. Connect your computer to the D1 Mini micro USB port. Verify that the D1 Mini serial port is recognized.
 * Set the switch on the charger board to the position opposite the **RUN** position. This is the **PROG** position but it is unlabelled.
