@@ -18,8 +18,8 @@ Use the following as a guide:
 * Use the Arduino IDE menu item *Tools | Board:* to select LOLIN(WEMOS) R2 D1 & mini or whatever version of the ESP8266 you are using.  
 * Download the D1M-Solar-Monitor firmware from this repository.
 * Use Arduino IDE menu item *Sketch | Include Library | Manage libraries...* to add these sensor libraries:
-   -- hp_BH1750 by Stefan Armborst
-   -- Adafruit INA219 by Adafruit
+   - hp_BH1750 by Stefan Armborst
+   - Adafruit INA219 by Adafruit
 * Open a ThingSpeak channel at [www.ThingSpeak.com](https://thingspeak.com/) and configure it as described in the firmware ThingSpeak_config.h file and the ThingSpeak Field Definition table below.
 * Enter your Wi-Fi and ThingSpeak information in the ThingSpeak_config.h file as described below.
 * Save yor sketch. Connect your computer to the D1 Mini micro USB port. Verify that the D1 Mini serial port is recognized.
