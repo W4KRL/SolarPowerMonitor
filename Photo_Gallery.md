@@ -10,7 +10,7 @@
 ![](images/Assembled_side_view.jpg)
 
 ### Top View
-![](Top_view.jpg)
+![](images/Top_view.jpg)
 
 ### Modification to charger board
 ![](images/Charger_modification.jpg)
