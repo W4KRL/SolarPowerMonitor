@@ -36,7 +36,7 @@ Use the following as a guide:
 | 5 | Cell Volts |
 | 6 | WiFi Signal |
 ### ThingSpeak_config.h
-The ThingSpeak_config.h file defines parameters that are unique to your solar power monitor. It must be located in the same folder as the sketch D1M-Solar-Monitor.ino file.
+The ThingSpeak_config.h file defines firmware parameters that are unique to your solar power monitor. It must be located in the same folder as the sketch D1M-Solar-Monitor.ino file.
 
 Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h tab and edit the information for your station as indicated by the comments within the file.
 
