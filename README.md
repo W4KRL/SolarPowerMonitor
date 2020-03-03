@@ -62,7 +62,7 @@ The TP4056 charge controller passes all current from the solar panel to the Lith
 The LiPo cell supplies power to the ESP8266 microcontroller through Schottky diode D1 and a low dropout voltage regulator on the D1 Mini module. The regulator provides 3.5 volts to the ESP8266 whenever the cell voltage is above that voltage. The D1 Mini can also operate on 5 volt power from the micro USB port. Diode D1 prevents overcharge of teh LiPo cell when the D1 Mini is connected to a USB supply.
 
 #### Simplified Power Supply Schematic
-![](images/EnergyFlow.png.jpg)
+![](images/EnergyFlow.png)
 The ESP8266 runs in a perpectual cycle as long as the LiPo can provide approximately 3.3 volts or more:
 * Initialize sensors (INA219 and BH1750)
 * Logon to your WiFi
