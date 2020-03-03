@@ -20,7 +20,7 @@ Use the following as a guide:
 * Use Arduino IDE menu item *Sketch | Include Library | Manage libraries...* to add these sensor libraries:
    - hp_BH1750 by Stefan Armborst
    - Adafruit_INA219 by Adafruit
-* Open a ThingSpeak channel at [www.ThingSpeak.com](https://thingspeak.com/) and configure it as described in the firmware ThingSpeak_config.h file and the ThingSpeak Field Definition table below.
+* Open a ThingSpeak channel at [www.ThingSpeak.com](https://thingspeak.com/) and configure it as described in the ThingSpeak Field Definitions table below.
 * Enter your Wi-Fi and ThingSpeak information in the ThingSpeak_config.h file as described below.
 * Save yor sketch. Connect your computer to the D1 Mini micro USB port. Verify that the D1 Mini serial port is recognized.
 * Set the switch on the charger board to the position opposite the **RUN** position. This is the **PROG** position but it is unlabelled.
@@ -35,7 +35,7 @@ Use the following as a guide:
 | 4 | Panel mW |
 | 5 | Cell Volts |
 | 6 | WiFi Signal |
-### ThingSpeak_config.h
+### Configuring ThingSpeak_config.h
 The ThingSpeak_config.h file defines firmware parameters that are unique to your solar power monitor. It must be located in the same folder as the sketch D1M-Solar-Monitor.ino file.
 
 Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h tab and edit the information for your station as indicated by the comments within the file.
