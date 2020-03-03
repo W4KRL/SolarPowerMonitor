@@ -90,4 +90,6 @@ This visualization plots the power and light intensity with time over 24-hours. 
 
 MATLAB Script: [Light_Power_Overlayed](https://github.com/W4KRL/SolarPowerMonitor/blob/master/MATLAB_Scripts/Light_Power_Overlayed.txt)
 
+Light & Power Overlayedn [![light_power_overlay](https://img.shields.io/badge/MATLAB-Script-brightgreen.svg?style=flat)](https://github.com/W4KRL/SolarPowerMonitor/blob/master/MATLAB_Scripts/Light_Power_Overlayed)
+
 ![](images/Power_and_light_overlayed.png)
