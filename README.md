@@ -54,7 +54,6 @@ The LiPo cell supplies power to the ESP8266 microcontroller through Schottky dio
 
 #### Simplified Power Supply Schematic
 ![](images/SolarPowerFlow.jpg)
-
 The ESP8266 runs in a perpectual cycle as long as the LiPo can provide approximately 3.3 volts or more:
 * Initialize sensors (INA219 and BH1750)
 * Logon to your WiFi
