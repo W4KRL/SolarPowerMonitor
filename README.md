@@ -26,8 +26,17 @@ Use the following as a guide.
 * Set the switch on the charger board to the position opposite the **RUN** position. This is the **PROG** position but it is unlabelled.
 * Upload the firmware to the D1 Mini. Set the switch to **RUN** when the upload finishes.
 
+### ThingSpeak Field Definitions
+| Field | Name |
+| - | ------------- |
+| 1 | Light Intensity |
+| 2 | Panel Volts |
+| 3 | Panel mA |
+| 4 | Panel mW |
+| 5 | Cell Volts |
+| 6 | WiFi Signal |
 ### ThingSpeak_config.h
-The sketch needs a ThingSpeak_config.h file. It must be located in the same folder as the sketch D1M-Solar-Monitor.ino file.
+The ThingSpeak_config.h file defines parameters that are unique to your solar power monitor. It must be located in the same folder as the sketch D1M-Solar-Monitor.ino file.
 
 Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h tab and edit the information for your station as indicated by the comments within the file.
 
