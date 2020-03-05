@@ -24,5 +24,5 @@
 ### Unit reconfigured to use a tripler base
 ![](images/Tripler_top_view.jpg)
 
-### Self-contained version with tripler base unit & solar panel mounted inside crayon box
+### Self-contained version with tripler base & solar panel mounted inside crayon box
 ![](images/Crayon_box_unit.jpg)
