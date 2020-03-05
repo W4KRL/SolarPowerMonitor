@@ -25,7 +25,7 @@ Use the following as a guide:
 * Enter your Wi-Fi and ThingSpeak information in the ThingSpeak_config.h file as described below.
 * Save your sketch. Connect your computer to the D1 Mini micro USB port. Verify that the D1 Mini serial port is recognized and set *Tools | Port* accordingly.
 * Set the switch on the charger board to the position opposite the **RUN** position. This is the **PROG** position but it is unlabelled.
-* Upload the firmware to the D1 Mini. Set the switch to **RUN** when the upload finishes. You can view useful information from teh unit on the IDE serial monitor.
+* Upload the firmware to the D1 Mini. Set the switch to **RUN** when the upload finishes. You can view useful information from the unit on the IDE serial monitor.
 
 ### ThingSpeak Field Definitions
 | Field | Name |
