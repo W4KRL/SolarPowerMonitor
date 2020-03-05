@@ -69,6 +69,7 @@ The Arduino firmware in the ESP8266 runs in a perpeptual cycle as long as the Li
 * Initialize sensors (INA219 and BH1750)
 * Logon to your WiFi
 * Read sensors: 
+   - Light intensity
    - Panel voltage, current & power
    - LiPo cell voltage
    - WiFi received signal strength
