@@ -54,9 +54,9 @@ Information needed:
 Save the sketch. Set the **RUN** switch to the **PROG** (unlabeled) position and upload to the microcontroller. Return the switch to **RUN** after a sucessful upload.
 
 ## How it works
-The solar panel produces power depending upon the brightness of the light falling on the panel. Current flows from the positive terminal of the panel to the Vin+ terminal of the INA219 curent/voltage sensor. It flows out of the Vin- terminal to the IN+ terminal of the TP4056 charge controller. The current from the BAT+ terminal charges the LiPo cell and returns to the negative terminal of the solar panel.
+The solar panel produces power depending upon the brightness of the light falling on the panel. Current flows from the positive terminal of the panel to the Vin+ terminal of the INA219 current/voltage sensor. It flows out of the Vin- terminal to the IN+ terminal of the TP4056 charge controller. The current from the BAT+ terminal charges the LiPo cell and returns to the negative terminal of the solar panel.
 
-The INA219 measures the current flow from the solar panel to the TP4056 and measures the voltage at the Vin- terminal. This is the same voltage that appears at the TP4056 IN+ terminal. The INA219 also calculates the power from the solar panel.
+The INA219 measures the current flow from the solar panel to the TP4056 and measures the voltage at the Vin- terminal to ground. This is the same voltage that appears at the TP4056 IN+ terminal. The INA219 also calculates the power from the solar panel. These measurements are sent to the D1 Mini over the I2C bus.
 
 The TP4056 charge controller passes all current from the solar panel to the Lithium Polymer cell until the terminal voltage of the cell reaches 4.2 Volts at full charge. At that voltage, it limits current to prevent overcharge of the cell.
 
@@ -68,7 +68,10 @@ The LiPo cell supplies power to the ESP8266 microcontroller through Schottky dio
 The Arduino firmware in the ESP8266 runs in a perpeptual cycle as long as the LiPo cell can provide approximately 3.3 volts or more:
 * Initialize sensors (INA219 and BH1750)
 * Logon to your WiFi
-* Read sensors
+* Read sensors: 
+   - Panel voltage, current & power
+   - LiPo cell voltage
+   - WiFi received signal strength
 * Print data to your serial port
 * Post data to your ThingSpeak channel
 * Enter deep sleep for one to five minutes 
