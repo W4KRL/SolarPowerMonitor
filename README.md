@@ -23,9 +23,9 @@ Use the following as a guide:
    - **Adafruit_INA219** by Adafruit
 * Open a ThingSpeak channel at [www.ThingSpeak.com](https://thingspeak.com/) and configure it as described in the ThingSpeak Field Definitions table below.
 * Enter your Wi-Fi and ThingSpeak information in the ThingSpeak_config.h file as described below.
-* Save yor sketch. Connect your computer to the D1 Mini micro USB port. Verify that the D1 Mini serial port is recognized.
+* Save your sketch. Connect your computer to the D1 Mini micro USB port. Verify that the D1 Mini serial port is recognized and set *Tools | Port* accordingly.
 * Set the switch on the charger board to the position opposite the **RUN** position. This is the **PROG** position but it is unlabelled.
-* Upload the firmware to the D1 Mini. Set the switch to **RUN** when the upload finishes.
+* Upload the firmware to the D1 Mini. Set the switch to **RUN** when the upload finishes. You can view useful information from teh unit on the IDE serial monitor.
 
 ### ThingSpeak Field Definitions
 | Field | Name |
