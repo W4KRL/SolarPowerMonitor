@@ -36,6 +36,10 @@ Use the following as a guide:
 | 4 | Panel mW |
 | 5 | Cell Volts |
 | 6 | WiFi Signal |
+ *  Put check only on used fields
+ *  Show Location checked if you wish
+ *  Leave Show Status unchecked
+ 
 ### Configuring ThingSpeak_config.h
 The ThingSpeak_config.h file defines firmware parameters that are unique to your solar power monitor. It must be located in the same folder as the sketch D1M-Solar-Monitor.ino file.
 
