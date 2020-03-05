@@ -20,3 +20,9 @@
 
 ### Unit in the rain
 ![](images/Unit-in-rain.jpg)
+
+### Unit reconfigured to use a tripler base
+![](images/Tripler_top_view.jpg)
+
+### Tripler base unit mounted inside crayon box
+![](images/Crayon_box.jpg)
