@@ -44,7 +44,7 @@ Open the sketch in the Arduino IDE. Select the ThingSpeak_config.h tab and edit 
 Information needed:
 1. Your WiFi SSID (You must use 2.4 GHz not 5 GHz.)
 2. Your WiFi password
-3. Sleep interval in seconds: 60 for testing, 600 or longer for normal service
+3. Sleep interval in seconds: 60 for testing, 300 or longer for normal service. Shorter intervals use more energy. **ThingSpeak does not permit an interval shorter than 15 seconds.**
 4. ThingSpeak channel ID (a numerical value)
 5. ThingSpeak API Write Key (alphanumeric between quotes)
 6. OPTIONAL (Values determined from running D1M-WX1_Calibration.ino)
