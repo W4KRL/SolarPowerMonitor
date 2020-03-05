@@ -25,4 +25,4 @@
 ![](images/Tripler_top_view.jpg)
 
 ### Tripler base unit mounted inside crayon box
-![](images/Crayon_box.jpg)
+![](images/Crayon_box_unit.jpg)
