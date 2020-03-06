@@ -1,28 +1,27 @@
 /*
-  D1M-WX1-Calibration.ino
-  06/06/2019 - changed name to D1M-WX1-Calibration.ino
-  02/01/2019 - Moved to GitHub
+  D1M_Calibration.ino
+  03/06/2020 - Moved to GitHub
   01-31/2019 - ON 0.1 seconds, OFF 0.9 seconds
-  23 September 2018 - shortened LED flash and off time
-  This program is used with IoT Kits weather stations to calibrate the 
+
+  This program is used with IoT Kits to calibrate the 
   voltage sensor. It also verifies the proper installation of the Arduino IDE 
   and ESP8266 core. It does two things:
   1) It blinks the onboard LED 0.1 seconds on and 0.9 seconds off
   2) It reports the voltage read by the analog to digital converter (ADC)
-  The printed circuit switches must be in this position:
-     ON
-     PROG
-  To use:
+
+To use:
   1) Open the Serial Monitor by menu item Tools | Serial Monitor or
      type Control+Shift+M or
      click the Serial Monitor icon in the upper right of the IDE window
   2) Change the baud rate in the Serial Monitor window to 115200 baud
   3) Use a digital multimneter (DMM) to read the dc voltage on the CELL terminals
      of the printed circuit board
-  4) Write down the voltage reported by the ADC and the voltage measured on the DMM
+  4) Write down the voltage reported by the ADC and the voltage measured on the DMM. Copy these values to the appropriate configuration file.
+  
   Karl Berger
-  2017.03.10
-  Copyright(c) 2018-2019 Karl W. Berger dba IoT Kits
+  2020.03.06
+  Copyright(c) 2018-2020 Karl W. Berger dba IoT Kits
+  
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
