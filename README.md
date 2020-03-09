@@ -36,8 +36,8 @@ Use the following as a guide:
 | 4 | Panel mW |
 | 5 | Cell Volts |
 | 6 | WiFi Signal |
- *  Put check only on used fields
- *  Show Location checked if you wish
+ *  Check only used fields 1 through 6
+ *  Check "Show Location" if you wish
  *  Leave Show Status unchecked
  
 ### Configuring ThingSpeak_config.h
