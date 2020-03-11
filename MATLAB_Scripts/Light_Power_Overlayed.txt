@@ -1,7 +1,7 @@
 % Light & Panel Power Overlay
 % Plot of light intensity and Solar Panel powewr overlayed on separate y axes
 % Karl Berger
-% 2020.02.27
+% 2020.03.11
 
 % TODO: plot curve only for non-zero light
 
@@ -28,7 +28,7 @@ for i = 1:length(timeStamps) - 1
 end
                                                    
 % Extract the light intensity from the first column
-lux = data(:, 1);
+lux = data(:, 1) / 1000;  % convert to kilolux
 
 % Extract the solar panel power from the second column
 power = data(:, 2);
@@ -44,7 +44,7 @@ power_ratio = energy / light;
 
 yyaxis right
 plot(timeStamps, lux, 'Linewidth', 2)
-ylabel('Lux')
+ylabel('Kilolux')
 
 yyaxis left
 plot(timeStamps, power, 'Linewidth', 2)
@@ -57,9 +57,9 @@ grid on           % grid always tied to left axis
 dim = [0.2 0.5 0.3 0.3];   % location and size of text box
 
 e = num2str(energy, '%5.0f');
-r = num2str(power_ratio, '%0.6f');
+r = num2str(power_ratio, '%0.3g');
 line1 = ['Energy:' ' ' e ' mW-h'];
-line2 = ['Ratio:' ' ' r ' mW/lux'];
+line2 = ['Ratio:' ' ' r ' mW/klx'];
 
 caption = {line1 line2};
 annotation('textbox', dim, 'String', caption, 'FitBoxToText','on');
