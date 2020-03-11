@@ -38,7 +38,7 @@ plot(x, fittedY, '-b', 'LineWidth', 2) % plot as blue line
 grid on;
 
 ylabel('Milliwatts');
-xlabel('Lux');
+xlabel('Kilolux');
 
 caption = sprintf('mW = %g * klx', slope(1));    
 
