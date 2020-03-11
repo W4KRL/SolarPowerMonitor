@@ -1,7 +1,7 @@
 % Correlation of solar panel power and light intensity
 % Solar Power Experiment
 % Karl Berger
-% 2020.02.28
+% 2020.03.11
 
 % to display fitted equation
 % https://www.mathworks.com/matlabcentral/answers/...
@@ -23,39 +23,24 @@ data = thingSpeakRead(readChannelID, 'Fields',[fld1 fld2], ...
                      'NumDays', dataDays);
                                                    
 % Extract the light intensity from the first column
-x = data(:, 1);
+x = data(:, 1) / 1000;  % convert to kilolux
 % Extract the solar panel power from the second column
 y = data(:, 2);
 
-% fit a linear equation to the data
-p = polyfit(x, y, 1);
-
-% find the ranges for the x and y data
-x_min = min(x);
-x_max = max(x);
-y_min = polyval(p,x_min);
-y_max = polyval(p,x_max);
+% fit a linear equation to the data. Force y-intercept to 0
+slope = x(:) \ y(:);
+fittedY = slope * x;
 
 % visualize the data
 hold on    % allow Scatter plot to overlay the equation Plot
-scatter(x, y, '.')
-plot([x_min x_max], [y_min y_max], 'k--', 'LineWidth', 2)
+scatter(x, y, 'or')  % plot as red circles
+plot(x, fittedY, '-b', 'LineWidth', 2) % plot as blue line
 grid on;
-
-% Place the fitted equation in upper left of graph.
-xl = xlim;
-yl = ylim;
-xt = 0.05 * (xl(2)-xl(1)) + xl(1);
-yt = 0.90 * (yl(2)-yl(1)) + yl(1);
 
 ylabel('Milliwatts');
 xlabel('Lux');
 
-% precede positive offset with plus sign
-if p(2) >= 0
-    caption = sprintf('mW = %g * lux + %g', p(1), p(2));    
-else
-    caption = sprintf('mW = %g * lux %g', p(1), p(2));
-end
+caption = sprintf('mW = %g * klx', slope(1));    
 
-text(xt, yt, caption, 'FontSize', 10, 'Color', 'r', 'FontWeight', 'bold');
+dim = [.15 .6 .3 .3];
+annotation('textbox', dim, 'String', caption, 'FitBoxToText', 'on');
