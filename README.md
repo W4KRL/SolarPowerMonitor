@@ -103,3 +103,9 @@ This visualization plots the power and light intensity with time over 24-hours. 
 Light & Power Overlayed [![light_power_overlay](https://img.shields.io/badge/MATLAB-Script-brightgreen.svg?style=flat)](https://github.com/W4KRL/SolarPowerMonitor/blob/master/MATLAB_Scripts/Light_Power_Overlayed.txt)
 
 ![](images/Power_and_light_overlayed.png)
+
+### Current Values
+
+This displays the current values and the energy collected over the previous 24 hours.
+
+Current Values [![Current_values](https://img.shields.io/badge/MATLAB-Script-brightgreen.svg?style=flat)](https://github.com/W4KRL/SolarPowerMonitor/blob/master/MATLAB_Scripts/Current_values)
