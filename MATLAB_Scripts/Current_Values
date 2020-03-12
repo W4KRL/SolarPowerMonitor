@@ -1,0 +1,170 @@
+% Displays Current Values in a Text Box
+% Configured for IoT Kits Solar Power Monitor
+% https://w4krl.com/iot-kits
+% Karl Berger
+% 12 March 2020
+
+%%%% ENTER YOUR CHANNEL ID %%%%
+readChannelID = 190041;
+
+%% Field definitions %%
+fldLux    = 1; % lux
+fldVpanel = 2; % Panel Volts
+fldIpanel = 3; % Panel mA
+fldPpanel = 4; % Panel mW 
+fldVcell  = 5; % Cell Volts
+fldRSSI   = 6; % WiFi Signal
+
+%% Read Current Data %%
+curLux    = thingSpeakRead(readChannelID, 'Field', fldLux);
+curVpanel = thingSpeakRead(readChannelID, 'Field', fldVpanel);
+curIpanel = thingSpeakRead(readChannelID, 'Field', fldIpanel);
+curPpanel = thingSpeakRead(readChannelID, 'Field', fldPpanel);
+curVcell  = thingSpeakRead(readChannelID, 'Field', fldVcell);
+curRSSI   = thingSpeakRead(readChannelID, 'Field', fldRSSI);
+
+curLux = curLux / 1000; % convert lux to kilolux
+
+%% number of days to integrate power
+dataDays = 1; 
+
+%% Read Power & Light data over desired period %%
+[data, time] = thingSpeakRead(readChannelID, 'Fields', [fldPpanel, fldLux],...
+                     'NumDays', dataDays);
+
+% extract power & lux from data
+power = data(:, 1);
+kilolux = data(:, 2) / 1000;
+
+% find number of data points
+dataLength = length(time);
+
+% create a vector of date & time of each data point
+t11 = datevec(datenum(time));
+
+t = [0];
+% put elapsed time between data points in t_1
+% put elapsed time from beginning of period in t
+% all time intervals in seconds
+for i = 1:dataLength - 1    
+    t_1(i) =  etime(t11(i + 1, :), t11(i, :));
+    t = [t t(end) + t_1(i)];
+end
+
+% integrate milliwatts with time
+% the result is in milliwatt-seconds for the duration of the plot
+energy = trapz(t, power);
+energy = energy / 3600; % convert to milliwatt-hours
+
+% integrate kilolux with time to find kilolux-hours
+klxhours = trapz(t, kilolux) / 3600;
+
+ratio = energy / klxhours;
+
+%% determine LiPo State Of Charge (soc)
+%% soc range 0 to 1
+if curVcell > 4.05
+    soc = 1.0;
+elseif curVcell > 3.8
+    soc = 0.7 + 1.2 * (curVcell - 3.8);
+elseif curVcell > 3.5
+    soc = 2.33 * (curVcell - 3.5);
+else
+    soc = 0;
+end
+
+% convert SOC to percent
+soc = 100 * soc;
+
+%% display dimensions
+%% lower left is 0, 0
+%% upper right is 1, 1
+
+textSize = 10;
+
+% width of columns
+time_width        = 0.98;
+label_width       = 0.28;  % 0.28
+value_width       = 0.2;   % 0.48
+unit_width        = 0.22;  % 0.22
+
+%  x left edge of columns
+data_left         = 0.01;  % 0.1
+label_left        = data_left;   % 0.1
+value_left        = label_left + label_width;  % 0.4
+unit_left         = value_left + value_width;  % 0.6
+
+% h height of rows
+time_height       = 0.15;
+data_height       = 0.86; % 0.55
+
+% y bottom of rows
+data_bottom       = 0.02;
+time_bottom       = 0.95 - time_height; %0.8;
+
+% Time of most recent data
+str = {strcat('Data Date:', {' '}, string(time(dataLength))),...
+       '=>Refresh browser to update<='};
+annotation('textbox',[data_left time_bottom time_width time_height],...
+'HorizontalAlignment','center',...
+'VerticalAlignment','bottom',...
+'LineStyle',':',...
+'String',str,...
+'FontSize',8,...
+'Color', 'red','FitBoxToText','off');
+
+% labels
+str = {'Power ..............',...
+       'Light ................',...
+       'Panel V ............',...
+       'Panel I .............',...
+       'LiPo Cell ..........',...
+       '     Charge.........',...
+       '(Last 24 hours)',...
+       'Energy .............',...
+       'Kilolux-hours ..',...
+       'Ratio ........'};
+
+annotation('textbox',[label_left data_bottom label_width data_height],...
+'HorizontalAlignment','left',...
+'VerticalAlignment','bottom',...
+'LineStyle','None',...
+'String',str,...
+'FontSize',textSize);
+
+% values
+str = {num2str(curPpanel, '%.1f'),...
+       num2str(curLux, '%.1f'),...
+       num2str(curVpanel, '%.2f'),...
+       num2str(curIpanel, '%.1f')...
+       num2str(curVcell, '%.2f'),...
+       num2str(soc, '%.0f'),...
+       ' ',...
+       num2str(energy, '%.0f')...
+       num2str(klxhours, '%.0f')...
+       num2str(ratio, '%.3f')};
+annotation('textbox',[value_left data_bottom value_width data_height],...
+'HorizontalAlignment','right',...
+'VerticalAlignment','bottom',...
+'LineStyle','None',...
+'String',str,...
+'FontSize',textSize,...
+'Color', 'blue');
+
+% units
+str = {'mW',...
+       'klx',...
+       'V',... 
+       'mA',...
+       'V',...       
+       '%',...
+       ' ',...
+       'mW•h',...
+       'klx•h',...
+       'mW•h/klx•h'};
+annotation('textbox',[unit_left data_bottom unit_width data_height],...
+'HorizontalAlignment','left',...
+'VerticalAlignment','bottom',...
+'LineStyle','None',...
+'String',str,...
+'FontSize',textSize);
