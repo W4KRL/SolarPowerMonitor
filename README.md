@@ -109,3 +109,5 @@ Light & Power Overlayed [![light_power_overlay](https://img.shields.io/badge/MAT
 This displays the current values and the energy collected over the previous 24 hours.
 
 Current Values [![Current_values](https://img.shields.io/badge/MATLAB-Script-brightgreen.svg?style=flat)](https://github.com/W4KRL/SolarPowerMonitor/blob/master/MATLAB_Scripts/Current_Values)
+
+![](images/Current_Values.png)
