@@ -19,7 +19,7 @@ Use the following as a guide:
 * Install the latest version of the Arduino IDE as appropriate to your computer available from [www.arduino.cc](https://www.arduino.cc). Do not install the web version.
 * Install the ESP8266 core into the Arduino IDE. See instructions at  https://github.com/esp8266/Arduino#installing-with-boards-manager
 * Use the Arduino IDE menu item *Tools | Board:* to select **LOLIN(WEMOS) R2 D1 & mini** or whatever version of the ESP8266 you are using.  
-* Download the D1M-Solar-Monitor firmware from this repository. Click on the **Clone or download** button and select **Download ZIP**. Unzip the file. It contains a folder SolarPowerMonitor-master. That folder contains several folders and files. Copy folders **D1M-Solar-Power-Monitor** and **D1M_calibration** to your Arduino folder. [![firmware_download](https://img.shields.io/badge/Download-Example-brightgreen.svg?style=flat)](/images/Firmware_download.png)
+* Download the D1M-Solar-Monitor firmware from this repository. Click on the **Clone or download** button and select **Download ZIP**. Unzip the file. It contains a folder SolarPowerMonitor-master. That folder contains several folders and files. Copy folders **D1M-Solar-Power-Monitor** and **D1M_calibration** to your Arduino folder. [![firmware_download](https://img.shields.io/badge/Download-Illustration-brightgreen.svg?style=flat)](/images/Firmware_download.png)
 * Use Arduino IDE menu item *Sketch | Include Library | Manage libraries...* to add these sensor libraries:
    - **hp_BH1750** by Stefan Armborst
    - **Adafruit_INA219** by Adafruit
