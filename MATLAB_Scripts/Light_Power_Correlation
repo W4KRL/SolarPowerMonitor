@@ -1,0 +1,67 @@
+% Correlation of solar panel power and light intensity
+% Solar Power Experiment
+% Karl Berger
+% 2020.03.20
+
+% to display fitted equation
+% https://www.mathworks.com/matlabcentral/answers/...
+% 401297-hello-how-do-i-display-the-equation-for-a-polyfit-line-on-this-plot
+
+%%%% ENTER YOUR CHANNEL ID
+readChannelID = 190041;
+
+%%%% ENTER YOUR FIELD ASSIGNMENTS
+fld1 = 1; % light intensity (lux)
+fld2 = 4; % Panel power (mW)
+
+%%%% ENTER THE NUMBER OF DAYS TO DISPLAY
+dataDays = 1;
+
+%% Read Data %%
+% This method ensures that each parameter has the same number of points
+data = thingSpeakRead(readChannelID, 'Fields',[fld1 fld2], ...
+                     'NumDays', dataDays);
+                                                   
+% Extract the light intensity from the first column
+x = data(:, 1) / 1000;  % convert to kilolux
+% Extract the solar panel power from the second column
+y = data(:, 2);
+
+% ratio is used to discriminate between charging and maintaining
+% action of the charge controller
+% the value must be slightly lower that the normal charging ratio
+% of mW / klx found by observation
+ratio = 2.9;
+
+% find index of maintenance values
+maintenance_index = find(y < ratio * x);
+
+% find index of charging values 
+charging_index = find(y >= ratio * x);
+
+% create x an y for maintenance values
+maintenanceY(maintenance_index) = y(maintenance_index);
+maintenanceX(maintenance_index) = x(maintenance_index);
+
+% create x & y for charging values
+chargingY = y(charging_index);
+chargingX = x(charging_index);
+
+% fit a linear equation to the charging data. Force y-intercept to 0
+slope = chargingX(:) \ chargingY(:);
+fittedY = slope * chargingX;
+
+% visualize the data
+hold on    % allow Scatter plot to overlay the equation Plot
+scatter(chargingX, chargingY, 'or')            % plot as red circles
+scatter(maintenanceX, maintenanceY, 'og');     % plot as green circles
+plot(chargingX, fittedY, '-b', 'LineWidth', 2) % plot as blue line
+grid on;
+
+ylabel('Milliwatts');
+xlabel('Kilolux');
+
+caption = sprintf('mW = %g * klx', slope(1));    
+
+dim = [.15 .6 .3 .3];
+annotation('textbox', dim, 'String', caption, 'FitBoxToText', 'on');
