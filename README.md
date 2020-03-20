@@ -90,7 +90,7 @@ The Arduino firmware in the ESP8266 runs in a perpeptual cycle as long as the Li
 These MATLAB scripts are for your ThingSpeak channel:
 
 ### Light_Power_Correlation
-This visualization plots 24-hours of power and light intensity on a scatter chart. The relationship between power ouput in milliwatts and light intensity in kilolux is printed on the chart.
+This visualization plots 24-hours of power and light intensity on a scatter chart. The relationship between power ouput in milliwatts and light intensity in kilolux is printed on the chart. The script discriminates between the charging and maintenance actions of the TP4056 charge controller.Charging data is displayed as red circles, maintenance data as green circles. The equation is fitted only to charging data.
 
 Light & Power Correlation [![light_power_correlation](https://img.shields.io/badge/MATLAB-Script-brightgreen.svg?style=flat)](https://github.com/W4KRL/SolarPowerMonitor/blob/master/MATLAB_Scripts/Light_Power_Correlation)
 
