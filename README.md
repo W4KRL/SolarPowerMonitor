@@ -1,5 +1,5 @@
 # Solar Power Monitor
-![](images/Bench_view_thumb.jpg)
+![Bench View](images/Bench_view_thumb.jpg)
 This is an experimental device to measure solar panel performance. It is adapted from the stacked version of the wireless solar-powered weather station kit available from **IoT Kits** at [w4krl.com/iot-kits](https://w4krl.com/iot-kits/). [![w4krl_iot-kits](https://img.shields.io/badge/W4KRL-IoT%20Kits-brightgreen.svg?style=flat)](https://w4krl.com/iot-kits/)
 
 It uses the Wemos D1 Mini with Arduino software. Solar panel output is measured by an INA219 voltage/current sensor module. A BH1750 module measures light intensity.
